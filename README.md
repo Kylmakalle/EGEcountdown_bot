@@ -88,7 +88,7 @@ Instructions
 
 29. Open your Telegram client and send the message `/start` to your bot. (type @`your-bot-username` at the search field to initiate the conversation)
 
-30. You can, for example, send `what time` to the bot and the bot will reply you. Try sending `/image` as well. Mission completed!
+30. `/rus`, `/math`, `/phys`, `/ikt` - Countdowns for popular exams.
 
 To customize the bot, edit the `main.py` starting from the `CUSTOMIZE FROM HERE` line. They are simple if-else statements. 
 
