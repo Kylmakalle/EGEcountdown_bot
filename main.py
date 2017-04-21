@@ -119,10 +119,10 @@ class WebhookHandler(webapp2.RequestHandler):
         if text.startswith('/'):
             if text == '/start':
                 reply('Bot enabled')
-                setEnabled(chat_id, True)
+                #setEnabled(chat_id, True)
             elif text == '/stop':
                 reply('Bot disabled')
-                setEnabled(chat_id, False)
+                #setEnabled(chat_id, False)
             elif '/rus' in text:
                 now = datetime.datetime.now()
                 drus = rus - now
