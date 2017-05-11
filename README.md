@@ -1,6 +1,8 @@
 # EGEcountdown_bot
 EGEcountdown_bot. Simple countdown to Unified State Exam 2017 in Russia. Very easy to install with Google App Engine.
 
+[@EGEcountdown_bot](https://t.me/EGEcountdown_bot) `/rus`, `/math`, `/phys`, `/ikt` - Countdowns for popular exams.
+
 Reddit post: http://www.reddit.com/r/Telegram/comments/3b1pwl/create_your_own_telegram_bot_stepbystep/
 
 Instructions
@@ -87,8 +89,6 @@ Instructions
 28. You should see `Webhook was set`.
 
 29. Open your Telegram client and send the message `/start` to your bot. (type @`your-bot-username` at the search field to initiate the conversation)
-
-30. https://t.me/EGEcountdown_bot `/rus`, `/math`, `/phys`, `/ikt` - Countdowns for popular exams.
 
 To customize the bot, edit the `main.py` starting from the `CUSTOMIZE FROM HERE` line. They are simple if-else statements. 
 
