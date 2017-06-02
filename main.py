@@ -40,10 +40,12 @@ def getEnabled(chat_id):
         return es.enabled
     return False
 
+
 def getcurrenttime():
     now = datetime.datetime.now(tz=MSK)
     now = now.replace(tzinfo=None)
     return now
+
 
 # ================================
 
@@ -73,7 +75,13 @@ rus = datetime.datetime.strptime("09.06.2017 10:00", FMT)
 math = datetime.datetime.strptime("02.06.2017 10:00", FMT)
 phys = datetime.datetime.strptime("07.06.2017 10:00", FMT)
 it = datetime.datetime.strptime("29.05.2017 10:00", FMT)
+
+res_rus = datetime.datetime.strptime("27.06.2017 12:00", FMT)
+res_math = datetime.datetime.strptime("16.06.2017 12:00", FMT)
+res_phys = datetime.datetime.strptime("22.06.2017 12:00", FMT)
+res_it = datetime.datetime.strptime("14.06.2017 12:00", FMT)
 MSK = pytz.timezone('Europe/Moscow')
+
 
 class WebhookHandler(webapp2.RequestHandler):
     def post(self):
@@ -124,44 +132,90 @@ class WebhookHandler(webapp2.RequestHandler):
         if text.startswith('/'):
             if text == '/start':
                 reply('Bot enabled')
-                setEnabled(chat_id, True)
-            elif text == '/stop':
-                reply('Bot disabled')
-                setEnabled(chat_id, False)
             elif '/rus' in text:
                 now = getcurrenttime()
                 drus = rus - now
-                reply("До Русича осталось {} дней, {} часов {} минут {} секунд.".format(drus.days,
-                                                                                        drus.seconds // 3600,
-                                                                                        drus.seconds % 3600 // 60,
-                                                                                        drus.seconds % 60))
+                dres_rus = res_rus - now
+                if drus.days >= 0:
+                    reply("До Русича осталось {} дней, {} часов {} минут {} секунд.".format(drus.days,
+                                                                                            drus.seconds // 3600,
+                                                                                            drus.seconds % 3600 // 60,
+                                                                                            drus.seconds % 60))
+                else:
+                    if dres_rus.days >= 0:
+                        reply("До резов Русича осталось {} дней, {} часов {} минут {} секунд.".format(dres_rus.days,
+                                                                                                      dres_rus.seconds // 3600,
+                                                                                                      dres_rus.seconds % 3600 // 60,
+                                                                                                      dres_rus.seconds % 60))
+                    else:
+                        reply(
+                            "Результаты по Русичу уже выложены!\nПроверяй http://check.ege.edu.ru/ или сайт местного РЦОИ:\n"
+                            "http://rcoi.net/links/49-rcoilinks.html")
+
             elif '/math' in text:
                 now = getcurrenttime()
                 dmath = math - now
-                reply("До Матеши осталось {} дней, {} часов {} минут {} секунд.".format(dmath.days,
-                                                                                        dmath.seconds // 3600,
-                                                                                        dmath.seconds % 3600 // 60,
-                                                                                        dmath.seconds % 60))
+                dres_math = res_math - now
+                if dmath.days >= 0:
+                    reply("До Матеши осталось {} дней, {} часов {} минут {} секунд.".format(dmath.days,
+                                                                                            dmath.seconds // 3600,
+                                                                                            dmath.seconds % 3600 // 60,
+                                                                                            dmath.seconds % 60))
+                else:
+                    if dres_math.days >= 0:
+                        reply("До резов Матеши осталось {} дней, {} часов {} минут {} секунд.".format(dres_math.days,
+                                                                                                      dres_math.seconds // 3600,
+                                                                                                      dres_math.seconds % 3600 // 60,
+                                                                                                      dres_math.seconds % 60))
+                    else:
+                        reply(
+                            "Результаты по Матеше уже выложены!\nПроверяй http://check.ege.edu.ru/ или сайт местного РЦОИ:\n"
+                            "http://rcoi.net/links/49-rcoilinks.html")
+
             elif '/phys' in text:
                 now = getcurrenttime()
                 dphys = phys - now
-                reply("До Физеки осталось {} дней, {} часов {} минут {} секунд.".format(dphys.days,
-                                                                                        dphys.seconds // 3600,
-                                                                                        dphys.seconds % 3600 // 60,
-                                                                                        dphys.seconds % 60))
+                dres_phys = res_phys - now
+                if dphys.days >= 0:
+                    reply("До Физеки осталось {} дней, {} часов {} минут {} секунд.".format(dphys.days,
+                                                                                            dphys.seconds // 3600,
+                                                                                            dphys.seconds % 3600 // 60,
+                                                                                            dphys.seconds % 60))
+                else:
+                    if dres_phys.days >= 0:
+                        reply("До резов Физеки осталось {} дней, {} часов {} минут {} секунд.".format(dres_phys.days,
+                                                                                                      dres_phys.seconds // 3600,
+                                                                                                      dres_phys.seconds % 3600 // 60,
+                                                                                                      dres_phys.seconds % 60))
+                    else:
+                        reply(
+                            "Результаты по Физеки уже выложены!\nПроверяй http://check.ege.edu.ru/ или сайт местного РЦОИ:\n"
+                            "http://rcoi.net/links/49-rcoilinks.html")
             elif '/ikt' in text:
                 now = getcurrenttime()
                 dit = it - now
-                reply("До ИКТ осталось {} дней, {} часов {} минут {} секунд.".format(dit.days,
-                                                                                     dit.seconds // 3600,
-                                                                                     dit.seconds % 3600 // 60,
-                                                                                     dit.seconds % 60))
+                dres_it = res_it - now
+                if dit.days >= 0:
+                    reply("До ИКТ осталось {} дней, {} часов {} минут {} секунд.".format(dit.days,
+                                                                                         dit.seconds // 3600,
+                                                                                         dit.seconds % 3600 // 60,
+                                                                                         dit.seconds % 60))
+                else:
+                    if dres_it.days >= 0:
+                        reply("До резов ИКТ осталось {} дней, {} часов {} минут {} секунд.".format(dres_it.days,
+                                                                                                   dres_it.seconds // 3600,
+                                                                                                   dres_it.seconds % 3600 // 60,
+                                                                                                   dres_it.seconds % 60))
+                    else:
+                        reply(
+                            "Результаты по ИКТ уже выложены!\nПроверяй http://check.ege.edu.ru/ или сайт местного РЦОИ:\n"
+                            "http://rcoi.net/links/49-rcoilinks.html")
 
         # CUSTOMIZE FROM HERE
 
-        elif 'who are you' in text:
+        """elif 'who are you' in text:
             reply('@EGEcountdown_bot, created by Kylmakalle: https://github.com/Kylmakalle/EGEcountdown_bot')
-        """else:
+        else:
             if getEnabled(chat_id):
                 reply('I got your message! (but I do not know how to answer)')
             else:
